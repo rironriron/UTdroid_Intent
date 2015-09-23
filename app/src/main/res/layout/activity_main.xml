@@ -1,0 +1,154 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/buttonBrowser"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="8"
+                android:text="ブラウザを開く" />
+
+            <Button
+                android:id="@+id/buttonSetting"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="6"
+                android:text="設定画面を開く" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/buttonWeb"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="7"
+                android:text="Webページを開く" />
+
+            <Button
+                android:id="@+id/buttonMail"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="6"
+                android:text="メールを送る" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/buttonMap"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="6"
+                android:text="地図を開く" />
+
+            <Button
+                android:id="@+id/buttonTel"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="6"
+                android:text="電話を掛ける" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/buttonMarket"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="5"
+                android:text="Google PLAYを開く" />
+
+            <Button
+                android:id="@+id/buttonGallery"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="6"
+                android:text="ギャラリーを開く" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/textViewGallery"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#e0e0ff"
+            android:minHeight="5dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/buttonIntent"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="4"
+                android:text="Intent" />
+
+            <Button
+                android:id="@+id/buttonIntentForResult"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="6"
+                android:text="Intent + Result" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/textViewIntentForResult"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#e0ffe0"
+            android:minHeight="5dp" />
+
+        <Button
+            android:id="@+id/buttonFilePicker"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="90dp"
+            android:layout_marginRight="90dp"
+            android:text="ファイルを選択" />
+
+        <TextView
+            android:id="@+id/textViewFilePicker"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#ffffe0"
+            android:minHeight="5dp" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#ffe0e0"
+            android:minHeight="5dp" />
+
+    </LinearLayout>
+
+</ScrollView>
