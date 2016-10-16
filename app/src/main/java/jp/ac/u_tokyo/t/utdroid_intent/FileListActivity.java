@@ -1,8 +1,12 @@
 package jp.ac.u_tokyo.t.utdroid_intent;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
@@ -26,6 +30,9 @@ public class FileListActivity extends AppCompatActivity {
 
     /* 現在のディレクトリの絶対パスを保持する変数 */
     private String currentDirectory;
+
+    /* SDカードにアクセスするPermission取得のための定数 */
+    private static final int SD_ACCESS_REQUEST_CODE = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -107,8 +114,40 @@ public class FileListActivity extends AppCompatActivity {
             }
         });
 
-        /* 現在のディレクトリの中身を読み込む */
-        makeFileList();
+        /* Android 6.0以上かどうかで条件分岐 */
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            /* Permissionを取得済みかどうか確認 */
+            String[] dangerousPermissions = new String[]{Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE};
+            if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED
+                    || ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+                /* 未取得ならPermissionを要求 */
+                requestPermissions(dangerousPermissions, SD_ACCESS_REQUEST_CODE);
+            }else{
+                /* 現在のディレクトリの中身を読み込む */
+                makeFileList();
+            }
+        }else{
+            /* 現在のディレクトリの中身を読み込む */
+            makeFileList();
+        }
+    }
+
+    /*
+     * Android 6.0以上のDANGEROUS_PERMISSION対策
+     */
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        if (requestCode == SD_ACCESS_REQUEST_CODE) {
+            // Permissionが許可された
+            if (grantResults.length == 0) {
+                return;
+            }else if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                /* 現在のディレクトリの中身を読み込む */
+                makeFileList();
+            } else {
+                Toast.makeText(this, "SDカードへのアクセスを許可して下さい。", Toast.LENGTH_SHORT).show();
+            }
+        }
     }
 
     /* 現在のディレクトリの中身を読み込むメソッド */
