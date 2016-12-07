@@ -156,7 +156,7 @@ public class MainActivity extends AppCompatActivity {
                 /* SubActivityを開いてonActivityResultで結果を受け取る */
                 Intent intent = new Intent(MainActivity.this, SubActivity.class);
 
-                /* Primitiveな型のデータ、Percelableを実装した型のデータをKey-Value形式で添付できる */
+                /* Primitiveな型のデータ、Parcelableを実装した型のデータをKey-Value形式で添付できる */
                 MyData myData = new MyData("めちゃ", 2);
                 intent.putExtra(INTENT_KEY_RESULT, myData);
                 startActivityForResult(intent, REQUEST_INTENT);
